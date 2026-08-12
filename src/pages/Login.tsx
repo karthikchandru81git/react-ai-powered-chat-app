@@ -2,7 +2,6 @@ import { useNavigate } from 'react-router'
 import { useState, useEffect, useContext } from 'react';
 import Loading from '../components/Loading';
 import { AppContext } from '../contextapi/AppContext';
-import chatbotVideo from "/chatbot.webm";
 import { motion } from 'motion/react'
 
 function Login() {
@@ -76,15 +75,6 @@ function Login() {
                 </div>
                 <div className='chatbot absolute bottom-0 left-0 w-[250px] m-0 p-0'>
                     <img src="./chatbot2.png" className='w-[100%] ' />
-                    {/* <video
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        className='w-[100%]'
-                    >
-                        <source src={chatbotVideo} type="video/webm" />
-                    </video> */}
                 </div>
             </div>
         </>
