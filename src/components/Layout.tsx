@@ -1,19 +1,17 @@
-import { Outlet } from "react-router"
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Chatbot from "../pages/Chatbot"
-import Logo from "./Logo";
 import { Popover, Tooltip } from "radix-ui";
-import { MixerHorizontalIcon, Cross2Icon } from "@radix-ui/react-icons";
 import { useNavigate } from 'react-router';
 import { capitalizeFirstLetter } from '../utilities/utilities'
 import { PanelLeftOpenIcon, PanelLeftCloseIcon, MenuIcon } from 'lucide-react'
+import ToolTipPreview from './ToolTipPreview';
 
 type TooltipDemoType = {
-    name: string,
-    fullname: string
+    name: string | undefined,
+    fullname: string | undefined
 }
 
-const TooltipDemo = ({ name, fullname }: TooltipDemoType) => {
+export const TooltipDemo = ({ name, fullname }: TooltipDemoType) => {
     return (
         <Tooltip.Provider>
             <Tooltip.Root>
@@ -32,7 +30,7 @@ const TooltipDemo = ({ name, fullname }: TooltipDemoType) => {
 
 type PopoverDemoType = {
     name: string,
-    toggle:boolean
+    toggle: boolean
 }
 const PopoverDemo = ({ name, toggle }: PopoverDemoType) => {
     let navigate = useNavigate();
@@ -48,7 +46,7 @@ const PopoverDemo = ({ name, toggle }: PopoverDemoType) => {
                 <div className={`loggedInUser absolute bottom-[0px] cursor-pointer left-[0px] bg-[#3b3683] ${toggle ? 'w-[160px]' : 'w-[60px]'} py-3 px-2`}>
                     <div className="loggedInUserCircle flex gap-2">
                         <TooltipDemo name={capitalizeFirstLetter(name, false)} fullname={capitalizeFirstLetter(name, true)} />
-                        <p className={`text-[18px] relative top-1 ${toggle ? 'block' : 'hidden'}`}>{capitalizeFirstLetter(name, true)}</p>
+                        <p className={`text-[14px] relative top-2.5 ${toggle ? 'block' : 'hidden'}`}>{capitalizeFirstLetter(name, true)}</p>
                     </div>
                 </div>
             </Popover.Trigger>
@@ -63,14 +61,10 @@ const PopoverDemo = ({ name, toggle }: PopoverDemoType) => {
     )
 }
 
-type LayoutType = {
-    children: any
-}
-
-function Layout({ children }: LayoutType) {
+function Layout() {
     let user_info = sessionStorage.getItem('user_info');
     let info = JSON.parse(user_info || '{}');
-    let [name, setName] = useState(info.username);
+    let [name] = useState(info.username);
     let [toggle, setToggle] = useState(false);
     let handleSidebarExpand = () => {
         console.log('clicked')
@@ -82,17 +76,21 @@ function Layout({ children }: LayoutType) {
     return (
         <>
             <div className="layout w-full flex w-full h-screen relative">
-                <MenuIcon className={`absolute top-3 left-3 text-white cursor-pointer md:hidden lg:hidden z-500 ${toggle ? 'hidden' : 'block'}`} onClick={handleSidebarExpand}/>
-                
+                <MenuIcon className={`absolute top-3 left-3 text-white cursor-pointer md:hidden lg:hidden z-500 ${toggle ? 'hidden' : 'block'}`} onClick={handleSidebarExpand} />
+
                 <div className={`sideBar w-[60px] p-0 bg-[#272269] group text-left fixed h-screen z-[400]  ${toggle ? 'w-[160px] block' : 'hidden md:block'} `}>
                     <div className="logo my-0 mx-[auto]  w-[35px] h-[35px]  absolute top-[15px] left-[10px]">
-                        <img src='./chatcraft_white.svg' className={` ${toggle? 'block group-hover:block' :'group-hover:hidden'}`} />
-                        <PanelLeftOpenIcon className={`hidden group-hover:block absolute top-0 right-2 cursor-pointer w-6 h-6 m-auto ${toggle ? 'block group-hover:hidden' : ''}`} onClick={handleSidebarExpand} />
-                        <PanelLeftCloseIcon className={` absolute top-1 -right-26 cursor-pointer w-6 h-6 m-auto ${toggle ? 'block group-hover:block' : 'hidden'}`} onClick={handleSidebarClose} />
+                        <img src='./chatcraft_white.svg' className={` ${toggle ? 'block group-hover:block' : 'group-hover:hidden'}`} />
+                        <ToolTipPreview text="Open sidebar">
+                            <PanelLeftOpenIcon className={`hidden text-white/50 hover:text-white group-hover:block absolute top-0 right-2 cursor-pointer w-6 h-6 m-auto ${toggle ? 'block group-hover:hidden' : ''}`} onClick={handleSidebarExpand} />
+                        </ToolTipPreview>
+                        <ToolTipPreview text="Close sidebar">
+                            <PanelLeftCloseIcon className={` absolute text-white/50 hover:text-white top-1 -right-28 cursor-pointer w-6 h-6 m-auto ${toggle ? 'block group-hover:block' : 'hidden'}`} onClick={handleSidebarClose} />
+                        </ToolTipPreview>
                     </div>
-                    <PopoverDemo name={name} toggle={toggle}/>
+                    <PopoverDemo name={name} toggle={toggle} />
                 </div>
-                <div className={`chatSection  relative ${toggle ? 'left-[17%] w-[80%]' :'left-[0%] w-[100%] md:w-[90%] md:left-[60px] lg:w-[95%]'}  h-screen z-[300]`}>
+                <div className={`chatSection  relative ${toggle ? 'left-[17%] w-[80%]' : 'left-[0%] w-[100%] md:w-[90%] md:left-[80px] lg:w-[90%]'}  h-screen z-[300]`}>
                     <Chatbot />
                 </div>
                 <div className='chatbotInner hidden fixed right-0 bottom-0 lg:w-[550px] md:w-[250px] m-0 p-0'>

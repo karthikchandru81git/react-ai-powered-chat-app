@@ -1,15 +1,10 @@
 import { useState, useEffect } from 'react'
 import ChatInput from '../components/ChatInput'
 import ChatMessages from '../components/ChatMessages';
-import { api, type GroqResponseType } from '../services/api'
+import { api, type ChatbotResponseType } from '../services/api'
 
-type GroqMessageState = {
-    groqMessages: GroqResponseType[]
-}
-type ChatbotType = {
-    setChats?: () => void
-}
-function Chatbot({ }: ChatbotType) {
+
+function Chatbot({ }) {
     const [chats, setChats] = useState(() => {
         const savedChats = sessionStorage.getItem('chat_history');
         return savedChats ? JSON.parse(savedChats) : []
@@ -28,8 +23,8 @@ function Chatbot({ }: ChatbotType) {
             let groqMessages = updatedChats.map(chat => ({
                 content: chat.name,
                 role: chat.sender === 'user' ? 'user' : 'assistant'
-            }));
-            let reply = await api.getChatBotResponse(groqMessages) as GroqAPIResponse;
+            })) as ChatbotResponseType[];;
+            let reply = await api.getChatBotResponse(groqMessages);
 
             let botResponseText = reply.choices[0].message.content;
             let botResponseMessage = {}
@@ -51,7 +46,7 @@ function Chatbot({ }: ChatbotType) {
                 sender: 'assistant'
             }
             setError(true);
-            setChats((prev:string) => [...prev, botResponseErrorMessage]);
+            setChats((prev: string) => [...prev, botResponseErrorMessage]);
         }
     }
     useEffect(() => {

@@ -1,6 +1,5 @@
 import './App.css'
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router'
-import Chatbot from './pages/Chatbot'
 import Login from './pages/Login'
 import Layout from './components/Layout'
 

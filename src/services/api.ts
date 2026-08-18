@@ -13,7 +13,7 @@ export type GroqResponseType = {
     success: boolean,
     reply: ChatbotResponseType
 }
-const getChatBotResponse = async (groqMessages: ChatbotResponseType[]) => {
+export const getChatBotResponse = async (groqMessages: ChatbotResponseType[]) => {
     try {
         //const models = await groq.models.list();
         //console.log('--------models----------', models.data.map(model => model.id));
