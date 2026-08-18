@@ -7,7 +7,7 @@ type GroqMessageState = {
     groqMessages: GroqResponseType[]
 }
 type ChatbotType = {
-    setChats: () => void
+    setChats?: () => void
 }
 function Chatbot({ }: ChatbotType) {
     const [chats, setChats] = useState(() => {

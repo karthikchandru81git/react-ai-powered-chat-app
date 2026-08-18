@@ -1,17 +1,17 @@
 import { useNavigate } from 'react-router'
 import { useState, useEffect, useContext } from 'react';
 import Loading from '../components/Loading';
-import { AppContext } from '../contextapi/AppContext';
+import { AppContext, useApp } from '../contextapi/AppContext';
 import { motion } from 'motion/react'
 
 function Login() {
-    const { username, updateUsername } = useContext(AppContext);
+    const { username, updateUsername } = useApp();
     const navigate = useNavigate();
     const initialState = {
         username: '',
         password: ''
     }
-    const [errorMessage, setErrorMessage] = useState([]);
+    const [errorMessage, setErrorMessage] = useState<string[]>([]);
     const [formValue, setFormValue] = useState(initialState);
     const [loading, setLoading] = useState(false);
     let isUsernameInValid = errorMessage.includes('Username is required');

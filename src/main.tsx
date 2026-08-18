@@ -1,3 +1,6 @@
+import "@fontsource/poppins/400.css"; // Regular weight
+import "@fontsource/poppins/700.css"; // Bold weight
+
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
