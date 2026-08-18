@@ -17,7 +17,7 @@ const TooltipDemo = ({ name, fullname }: TooltipDemoType) => {
         <Tooltip.Provider>
             <Tooltip.Root>
                 <Tooltip.Trigger asChild>
-                    <strong className='w-[50px] h-[50px] bg-white rounded-[50px] text-center block leading-[50px] text-gray-900'>{name}</strong>
+                    <strong className='w-[40px] h-[40px] font-normal bg-blue-950 rounded-[40px] text-center block leading-[40px] text-white'>{name}</strong>
                 </Tooltip.Trigger>
                 <Tooltip.Portal>
                     <Tooltip.Content className="TooltipContent" sideOffset={15} side="right">
@@ -74,8 +74,8 @@ function Layout({ children }:LayoutType) {
     return (
         <>
             <div className="layout w-full flex w-full h-screen relative">
-                <div className="sideBar w-[6%] p-0 bg-[#110f3d] text-left fixed h-screen">
-                    <div className="logo my-0 mx-[auto] w-[50px] absolute top-[15px] left-[15px]">
+                <div className="sideBar w-[6%] p-0 bg-white/50 border-1 shadow-2xl shadow-gray-400 border-r-gray-400 text-left fixed h-screen z-[400]">
+                    <div className="logo my-0 mx-[auto] w-[35px] h-[35px]  absolute top-[15px] left-[15px]">
                         <img src='./chatcraft_tiny.svg' />
                     </div>
                     <PopoverDemo name={name} />
@@ -84,7 +84,7 @@ function Layout({ children }:LayoutType) {
                 <div className="chatSection w-[90%] relative left-[7%] h-screen z-[300]">
                     <Chatbot />
                 </div>
-                <div className='chatbotInner fixed right-0 bottom-0 w-[550px] m-0 p-0'>
+                <div className='chatbotInner fixed right-0 bottom-0 lg:w-[550px] md:w-[250px] m-0 p-0'>
                     <img src='./chatbot3.png' className='w-full opacity-[0.3] relative top-5'/>
                 </div>
             </div>

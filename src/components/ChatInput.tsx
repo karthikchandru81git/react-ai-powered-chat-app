@@ -3,19 +3,19 @@ import { ArrowUpIcon } from "@radix-ui/react-icons"
 import { capitalizeFirstLetter } from '../utilities/utilities';
 
 type ChatInputType = {
-    name: string,
     inputValue: (value: string) => void,
     position: string,
-    reference: (buddy: number) => void,
-    buddy: number
+    handleCount: (count: number) => void,
+    count: number
 }
 type UserInfoType = {
     username: string | null
 }
-function ChatInput({ inputValue, position, reference, buddy }: ChatInputType) {
+function ChatInput({ inputValue, position, handleCount, count }: ChatInputType) {
     let user_info = sessionStorage.getItem('user_info');
     let { username } = JSON.parse(user_info || '{}') as UserInfoType;
     const [value, setValue] = useState('');
+    let isButtonDisabled = value.trim().length === 0;
     let [greetMessage, setGreetMessage] = useState('');
     let currentHour = new Date()
     let time = currentHour.getHours();
@@ -34,6 +34,8 @@ function ChatInput({ inputValue, position, reference, buddy }: ChatInputType) {
     const handleUserInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value)
     }
+    
+    //let[disabled, setDisabled] = useState(true);
     const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (!value) {
@@ -41,7 +43,7 @@ function ChatInput({ inputValue, position, reference, buddy }: ChatInputType) {
         }
         inputValue(value);
         setValue('');
-        reference(buddy + 1);
+        handleCount(count + 1);
     }
     return (
         <div className='chatbotInputParent relative w-[93%] z-[350]'>
@@ -52,7 +54,7 @@ function ChatInput({ inputValue, position, reference, buddy }: ChatInputType) {
                         placeholder='Ask anything'
                         onChange={handleUserInput}
                         className='bg-white text-gray-900 py-[15px] px-[20px] border-0 rounded-[25px] w-[74%] my-0 mx-[auto] outline-0 text-[18px] shadow-[2px_2px_30px_0px_rgba(0,0,0,0.3)]' />
-                    <button className='sendButton absolute right-[105px] top-[5px] text-center bg-black text-white border-0 cursor-pointer w-[40px] h-[40px] rounded-[30px] '><ArrowUpIcon className='w-[25px] h-[25px] relative left-[8px]'/></button>
+                    <button disabled={isButtonDisabled} className='sendButton disabled:bg-black/30 absolute right-[105px] top-[5px] text-center bg-black text-white border-0 cursor-pointer w-[40px] h-[40px] rounded-[30px] disabled:cursor-not-allowed'><ArrowUpIcon className='w-[25px] h-[25px] relative left-[8px]'/></button>
 
                 </form>
             </div>
