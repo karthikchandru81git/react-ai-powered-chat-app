@@ -70,7 +70,14 @@ function Login() {
 
                     <div className='loginForm  relative z-20 my-0 mx-[auto] sm:w-full md:w-full lg:w-full xl:w-[80%] 2xl:w-full'>
                         <form onSubmit={handleLogin} className='flex gap-3 flex-col'>
-                            <h1 className='leading-[45px] !text-white'> <motion.div initial={{ opacity: 0, y: 100 }} animate={{ opacity: 1, y: 50 }} transition={{ duration: 0.9 }} >AI Powered</motion.div> <br /><motion.div initial={{ opacity: 0, y: 100 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }} ><strong className='text-6xl'>Chatbot</strong></motion.div></h1>
+                            <h1 className='leading-[45px] !text-white'> 
+                                <h2 className='!text-4xl !text-white !font-[700]'>AI Powered</h2>
+                                <strong className='text-6xl'>Chatbot</strong>
+                                {/* <motion.div initial={{ opacity: 0, y: 100 }} animate={{ opacity: 1, y: 50 }} transition={{ duration: 0.9 }} >AI Powered</motion.div>  */}
+                               
+                                {/* <motion.div initial={{ opacity: 0, y: 100 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }} ><strong className='text-6xl'>Chatbot</strong>
+                                </motion.div> */}
+                                </h1>
                             <input type="text"
                                 value={formValue.username}
                                 name='username' placeholder='Username'
