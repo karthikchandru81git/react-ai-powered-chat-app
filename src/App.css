@@ -46,7 +46,6 @@ body {
 }
 
 .layout {
-  background: #0A0928;
   /* background: linear-gradient(333deg, rgb(172, 172, 172) 14%, rgba(255, 255, 255, 1) 100%); */
   overflow: overlay;
   z-index: 200;
@@ -58,8 +57,8 @@ body {
 .assistant p:not(:first-child){
   margin-bottom:20px;
 }
-.assistant ul{display:flex;list-style:disc; list-style-position: inside;  flex-direction: column;width:100%;}
-.assistant ul li{margin:10px 0;}
+.assistant ul{display:flex;list-style:disc;  flex-direction: column;width:100%;margin:20px;}
+.assistant ul li{margin:0px 0;}
 .assistant table{margin:20px 0;line-height: 25px;width:100%;table-layout: fixed;}
 .assistant table tr th{background-color: #ececec;}
 .assistant table th, .assistant table td{padding:10px}

@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router'
 import { useState } from 'react';
 import Loading from '../components/Loading';
 import { useApp } from '../contextapi/AppContext';
-import { Settings2Icon, User, CogIcon } from 'lucide-react';
+import { CogIcon } from 'lucide-react';
 import DialogPreview from '../components/DialogPreview';
 
 function Login() {
@@ -77,7 +77,7 @@ function Login() {
                     <div className='loginForm  relative z-20 my-0 mx-[auto] sm:w-full md:w-full lg:w-full xl:w-[80%] 2xl:w-full'>
                         <form onSubmit={handleLogin} className='flex gap-3 flex-col'>
                             <h1 className='leading-[45px] !text-white'>
-                                <h2 className='!text-4xl !text-white !font-[700]'>AI Powered</h2>
+                                <div className='!text-4xl !text-white !font-[700]'>AI Powered</div>
                                 <strong className='text-6xl'>Chatbot</strong>
                                 {/* <motion.div initial={{ opacity: 0, y: 100 }} animate={{ opacity: 1, y: 50 }} transition={{ duration: 0.9 }} >AI Powered</motion.div>  */}
 
@@ -89,7 +89,7 @@ function Login() {
                                 name='username' placeholder='Username'
                                 onChange={handleInputChange}
                                 className={`rounded-md py-3 px-3 my-0 mx-[auto] w-full 
-                                text-[16px] border border-gray-400 outline-0 text-white placeholder:text-gray-400
+                                text-[14px] border border-gray-400 outline-0 text-white placeholder:text-gray-400
                                 focus:bg-white focus:text-gray-950  ${isUsernameInValid ? 'shadow-[0px_0px_25px_0px_rgba(249,_115,_22,_0.3)] border-red-500' : 'shadow-[0px_0px_5px_1px_rgba(0,_0,_0,_0.5)]'}`}
                             />
                             <input type="password"
@@ -97,7 +97,7 @@ function Login() {
                                 name='password' placeholder='Password'
                                 onChange={handleInputChange}
                                 className={`rounded-md py-3 px-3 my-0 mx-[auto] w-full 
-                                text-[16px] border border-gray-400 outline-0 text-white placeholder:text-gray-400
+                                text-[14px] border border-gray-400 outline-0 text-white placeholder:text-gray-400
                                 focus:bg-white focus:text-gray-950  ${isPasswordInValid ? 'shadow-[0px_0px_25px_0px_rgba(249,_115,_22,_0.3)] border-red-500' : '[0px_0px_5px_1px_rgba(0,_0,_0,_0.5)]'}`}
                             />
                             <button

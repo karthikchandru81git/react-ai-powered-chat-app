@@ -1,6 +1,9 @@
 import { Dialog } from "radix-ui";
-
-function DialogPreview({ open, onOpenChange }) {
+type DialogPreviewType = {
+    open:boolean,
+    onOpenChange: (open:boolean) => void
+}
+function DialogPreview({ open, onOpenChange }:DialogPreviewType) {
     return (
         <Dialog.Root open={open} onOpenChange={onOpenChange}>
             <Dialog.Trigger asChild>
