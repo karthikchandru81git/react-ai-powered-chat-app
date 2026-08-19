@@ -1,11 +1,13 @@
 import { useNavigate } from 'react-router'
-import { useState} from 'react';
+import { useState } from 'react';
 import Loading from '../components/Loading';
 import { useApp } from '../contextapi/AppContext';
-import { motion } from 'motion/react'
+import { Settings2Icon, User, CogIcon } from 'lucide-react';
+import DialogPreview from '../components/DialogPreview';
 
 function Login() {
     const { updateUsername } = useApp();
+    const[isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate();
     const initialState = {
         username: '',
@@ -50,19 +52,23 @@ function Login() {
             [e.target.name]: e.target.value
         }))
     }
-
+    let handleOpenDialog = () => {
+        setIsOpen(true);
+    }
 
     return (
         <>
             <div className='login flex items-center justify-center relative min-h-screen my-0 mx-[50px]'>
                 <div className='loginLeft w-[50%] hidden sm:hidden md:hidden xl:block lg:block'>
-                    <div className='logo relative left-3/5'>
+                    <div className='logo relative left-3/8'>
                         <img src='./chatcraft_logo.svg' className='w-1/3' />
+                        <div onClick={handleOpenDialog} className='technologies relative flex gap-2 mt-5 ml-12 border-1 border-white w-[130px] px-5 py-2 rounded-md opacity-70 hover:opacity-100 cursor-pointer'>
+                            <CogIcon className='text-white relative z-400 w-5 h-5' /><span>Built With</span>
+                        </div>
                     </div>
-                    <div className='technologies hidden'>
-                        <p>ReactJS, TailwindCSS, Groq AI Model (llama-3.3-70b-versatile)</p>
-                    </div>
+
                 </div>
+
                 <div className='loginRight w-full md:w-[50%] md:left-[130px] lg:left-10 lg:w-[30%] xl:w-[30%] 2xl:w-[40%] relative '>
                     <div className='relative z-50 top-[50px] m-auto block xl:hidden lg:hidden md:hidden'>
                         <img src='./chatcraft_logo.svg' className='w-[40%] sm:w-[60%] m-auto' />
@@ -70,14 +76,14 @@ function Login() {
 
                     <div className='loginForm  relative z-20 my-0 mx-[auto] sm:w-full md:w-full lg:w-full xl:w-[80%] 2xl:w-full'>
                         <form onSubmit={handleLogin} className='flex gap-3 flex-col'>
-                            <h1 className='leading-[45px] !text-white'> 
+                            <h1 className='leading-[45px] !text-white'>
                                 <h2 className='!text-4xl !text-white !font-[700]'>AI Powered</h2>
                                 <strong className='text-6xl'>Chatbot</strong>
                                 {/* <motion.div initial={{ opacity: 0, y: 100 }} animate={{ opacity: 1, y: 50 }} transition={{ duration: 0.9 }} >AI Powered</motion.div>  */}
-                               
+
                                 {/* <motion.div initial={{ opacity: 0, y: 100 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }} ><strong className='text-6xl'>Chatbot</strong>
                                 </motion.div> */}
-                                </h1>
+                            </h1>
                             <input type="text"
                                 value={formValue.username}
                                 name='username' placeholder='Username'
@@ -109,6 +115,7 @@ function Login() {
                     <img src="./chatbot2.png" className='w-[100%] ' />
                 </div>
             </div>
+            <DialogPreview open={isOpen} onOpenChange={setIsOpen}/>
         </>
     )
 }

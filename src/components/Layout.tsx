@@ -66,6 +66,11 @@ function Layout() {
     let info = JSON.parse(user_info || '{}');
     let [name] = useState(info.username);
     let [toggle, setToggle] = useState(false);
+    let menus = [
+        { name: 'Settings', link: '' },
+        { name: 'Profile', link: '' },
+        { name: 'Downloads', link: '' }
+    ]
     let handleSidebarExpand = () => {
         console.log('clicked')
         setToggle(true);
@@ -73,12 +78,25 @@ function Layout() {
     let handleSidebarClose = () => {
         setToggle(false);
     }
+
     return (
         <>
             <div className="layout w-full flex w-full h-screen relative">
                 <MenuIcon className={`absolute top-3 left-3 text-white cursor-pointer md:hidden lg:hidden z-500 ${toggle ? 'hidden' : 'block'}`} onClick={handleSidebarExpand} />
 
                 <div className={`sideBar w-[60px] p-0 bg-[#272269] group text-left fixed h-screen z-[400]  ${toggle ? 'w-[160px] block' : 'hidden md:block'} `}>
+
+                    <div className={`menus text-white absolute top-20 w-[160px] border-t-1 border-white/40 ${toggle ? 'md:block lg:block' : 'hidden'}`}>
+                        <ul className='flex flex-col gap-3 m-5 [&_li]:cursor-pointer'>
+                            {
+                                menus.map((menu, index) => {
+                                    return(
+                                        <li key={menu.id || index} className='text-white/70 hover:text-white'>{menu.name}</li>
+                                    )
+                                })
+                            }
+                        </ul>
+                    </div>
                     <div className="logo my-0 mx-[auto]  w-[35px] h-[35px]  absolute top-[15px] left-[10px]">
                         <img src='./chatcraft_white.svg' className={` ${toggle ? 'block group-hover:block' : 'group-hover:hidden'}`} />
                         <ToolTipPreview text="Open sidebar">
@@ -90,7 +108,7 @@ function Layout() {
                     </div>
                     <PopoverDemo name={name} toggle={toggle} />
                 </div>
-                <div className={`chatSection  relative ${toggle ? 'left-[17%] w-[80%]' : 'left-[0%] w-[100%] md:w-[90%] md:left-[80px] lg:w-[90%]'}  h-screen z-[300]`}>
+                <div className={`chatSection  relative ${toggle ? 'left-[17%] w-[80%]' : 'left-[0%] w-[100%] md:w-[93%] md:left-[80px] lg:w-[93%]'}  h-screen z-[300]`}>
                     <Chatbot />
                 </div>
                 <div className='chatbotInner hidden fixed right-0 bottom-0 lg:w-[550px] md:w-[250px] m-0 p-0'>
