@@ -1,13 +1,13 @@
 import { useNavigate } from 'react-router'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Loading from '../components/Loading';
 import { useApp } from '../contextapi/AppContext';
-import { CogIcon } from 'lucide-react';
+import { CogIcon, UserIcon, KeyIcon } from 'lucide-react';
 import DialogPreview from '../components/DialogPreview';
 
 function Login() {
     const { updateUsername } = useApp();
-    const[isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate();
     const initialState = {
         username: '',
@@ -55,15 +55,16 @@ function Login() {
     let handleOpenDialog = () => {
         setIsOpen(true);
     }
-
+    const [isTouched, setIsTouched] = useState(false);
+    
     return (
         <>
             <div className='login flex items-center justify-center relative min-h-screen my-0 mx-[50px]'>
                 <div className='loginLeft w-[50%] hidden sm:hidden md:hidden xl:block lg:block'>
                     <div className='logo relative left-3/8'>
                         <img src='./chatcraft_logo.svg' className='w-1/3' />
-                        <div onClick={handleOpenDialog} className='technologies relative flex gap-2 mt-5 ml-12 border-1 border-white w-[130px] px-5 py-2 rounded-md opacity-70 hover:opacity-100 cursor-pointer'>
-                            <CogIcon className='text-white relative z-400 w-5 h-5' /><span>Built With</span>
+                        <div onClick={handleOpenDialog} className='technologies shadow-md sha shadow-cyan-300 relative flex gap-2 mt-5 ml-12 border-1 border-white w-[130px] px-5 py-2 rounded-md opacity-70 hover:opacity-100 cursor-pointer'>
+                            <CogIcon className='text-white relative z-400 w-5 h-5 animate-spin' /><span>Built With</span>
                         </div>
                     </div>
 
@@ -84,22 +85,32 @@ function Login() {
                                 {/* <motion.div initial={{ opacity: 0, y: 100 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }} ><strong className='text-6xl'>Chatbot</strong>
                                 </motion.div> */}
                             </h1>
-                            <input type="text"
-                                value={formValue.username}
-                                name='username' placeholder='Username'
-                                onChange={handleInputChange}
-                                className={`rounded-md py-3 px-3 my-0 mx-[auto] w-full 
-                                text-[14px] border border-gray-400 outline-0 text-white placeholder:text-gray-400
-                                focus:bg-white focus:text-gray-950  ${isUsernameInValid ? 'shadow-[0px_0px_25px_0px_rgba(249,_115,_22,_0.3)] border-red-500' : 'shadow-[0px_0px_5px_1px_rgba(0,_0,_0,_0.5)]'}`}
-                            />
-                            <input type="password"
-                                value={formValue.password}
-                                name='password' placeholder='Password'
-                                onChange={handleInputChange}
-                                className={`rounded-md py-3 px-3 my-0 mx-[auto] w-full 
+                            <div className='field flex relative group'>
+                                <div className='absolute top-4 left-4'><UserIcon className={`w-5 h-5 text-white group-focus-within:text-black  ${isTouched ? 'text-white' : 'text-black'} `} /></div>
+                                <input type="text"
+                                    onBlur={() => setIsTouched(true)}
+                                    onFocus={() => setIsTouched(false)}
+                                    value={formValue.username}
+                                    name='username' placeholder='Username'
+                                    onChange={handleInputChange}
+                                    className={`rounded-md  py-3 px-3 my-0 mx-[auto] w-full 
+                                text-[14px] border border-gray-400 outline-0 indent-10 text-white placeholder:text-gray-400
+                                focus:bg-white focus:text-gray-950   ${isUsernameInValid ? 'shadow-[0px_0px_25px_0px_rgba(249,_115,_22,_0.3)] border-red-500' : 'shadow-[0px_0px_5px_1px_rgba(0,_0,_0,_0.5)]'}`}
+                                />
+                            </div>
+                            <div className='field flex relative group'>
+                                <div className='absolute top-4 left-4'><KeyIcon className={`w-5 h-5 text-white group-focus-within:text-black  ${isTouched ? 'text-white' : 'text-black'} `}/></div>
+                                <input type="password"
+                                    onBlur={() => setIsTouched(true)}
+                                    onFocus={() => setIsTouched(false)}
+                                    value={formValue.password}
+                                    name='password' placeholder='Password'
+                                    onChange={handleInputChange}
+                                    className={`rounded-md py-3 px-3 my-0 mx-[auto] indent-10 w-full 
                                 text-[14px] border border-gray-400 outline-0 text-white placeholder:text-gray-400
                                 focus:bg-white focus:text-gray-950  ${isPasswordInValid ? 'shadow-[0px_0px_25px_0px_rgba(249,_115,_22,_0.3)] border-red-500' : '[0px_0px_5px_1px_rgba(0,_0,_0,_0.5)]'}`}
-                            />
+                                />
+                            </div>
                             <button
                                 className='rounded-md py-3 px-3 my-0 mx-[auto] w-full text-[16px]
                             cursor-pointer bg-[#1357d6] hover:bg-[#1b6aff] h-[50px] disabled:cursor-not-allowed disabled:bg-[#1357d6] disabled:opacity-60'>{loading ? <Loading /> : 'Login'}</button>
@@ -115,7 +126,7 @@ function Login() {
                     <img src="./chatbot2.png" className='w-[100%] ' />
                 </div>
             </div>
-            <DialogPreview open={isOpen} onOpenChange={setIsOpen}/>
+            <DialogPreview open={isOpen} onOpenChange={setIsOpen} />
         </>
     )
 }

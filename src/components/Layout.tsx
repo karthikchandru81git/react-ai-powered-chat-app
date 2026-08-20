@@ -113,7 +113,7 @@ function Layout() {
             <div className={`layout ${theme ? 'bg-[#0A0928]' : 'bg-[#e9e9e9]'} w-full flex w-full h-screen relative`}>
                 <MenuIcon className={`absolute top-3 left-3 text-white cursor-pointer md:hidden lg:hidden z-500 ${toggle ? 'hidden' : 'block'}`} onClick={handleSidebarExpand} />
 
-                <div className={`sideBar transition-all duration-300 ease-in-out w-[60px] p-0 ${theme ? 'bg-[#272269]' : 'bg-[#ffffff]'}   group text-left fixed h-screen z-[400]  ${toggle ? 'w-[200px] block' : 'hidden md:block'} `}>
+                <div className={`sideBar transition-all shadow-2xl duration-300 ease-in-out w-[60px] p-0 ${theme ? 'bg-[#272269] shadow-black' : 'bg-[#ffffff] shadow-gray-500'}   group text-left fixed h-screen z-[400]  ${toggle ? 'w-[200px] block ' : 'hidden md:block  '} `}>
 
                     <div className={`menus transition-all duration-300 ease-in-out text-white absolute top-20  border-t ${theme ? 'border-white/40' : 'border-black/20'} ${toggle ? 'w-[200px]' : 'w-[60px]'}`}>
                         <ul className='flex flex-col gap-3 m-5 [&_li]:cursor-pointer'>

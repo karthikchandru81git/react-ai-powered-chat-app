@@ -24,7 +24,6 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
   });
 
   const updateUsername = (value: string) => {
-    console.log('update theme....!!!!');
     setUsername(value);
     sessionStorage.setItem('userInfo', JSON.stringify({ username: value }))
   }
