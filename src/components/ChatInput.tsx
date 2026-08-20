@@ -63,17 +63,17 @@ function ChatInput({ inputValue, position, handleCount, count }: ChatInputType) 
         button.style.top = `${textarea.scrollHeight > 55 ? '100px' : ''}`;
     }, [value])
     return (
-        <div className='chatbotInputParent relative w-[93%] z-350'>
-            <div className={`chatbotInput fixed bottom-62.5 w-[55%] left-[50%] translate-x-[-50%] ${position} `}>
-                <h1 className={`welcomeText ${theme ? 'text-white!' : 'text-black!'}  relative text-[25px]! mb-20 font-normal! tracking-normal`}>Hello <strong>{capitalizeFirstLetter(username, true)}</strong>, How can I help you today?</h1>
-                <form onSubmit={handleSubmit} className='relative'>
+        <div className='chatbotInputParent relative w-[100%] z-350'>
+            <div className={`chatbotInput fixed bottom-62.5 w-[80%] md:w-[70%] left-[50%] translate-x-[-50%] ${position} `}>
+                <h1 className={`welcomeText leading-[25px] ${theme ? 'text-white!' : 'text-black!'}  relative text-[25px]! mb-20 font-normal! tracking-normal`}>Hello <strong>{capitalizeFirstLetter(username, true)}</strong>, How can I help you today?</h1>
+                <form onSubmit={handleSubmit} className='relative m-auto w-[100%]  md:w-[80%] '>
                     <textarea value={value}
                         ref={textareaRef}
                         placeholder='Ask anything'
                         onChange={(e) => setValue(e.target.value)}
                         onKeyDown={handleUserInput}
-                        className='bg-[#FFFFFF] resize-none overflow-hidden h-[45px] text-gray-900 py-[15px] px-[20px] border-1 border-gray-500 rounded-[25px] w-[74%] my-0 mx-[auto] outline-0 text-[14px] shadow-[2px_2px_60px_2px_rgba(0,0,0,0.5)]'></textarea>
-                    <button ref={buttonRef} disabled={isButtonDisabled} className='sendButton disabled:bg-black/30 absolute right-[105px] top-[7px] text-center bg-black text-white border-0 cursor-pointer w-[40px] h-[40px] rounded-[30px] disabled:cursor-not-allowed'><ArrowUpIcon className='w-[25px] h-[25px] relative left-[8px]' /></button>
+                        className='bg-[#FFFFFF] resize-none overflow-hidden h-[45px] text-gray-900 py-[15px] px-[20px] border-1 border-gray-500 rounded-[25px] w-[100%] my-0 mx-[auto] outline-0 text-[14px] shadow-[2px_2px_60px_2px_rgba(0,0,0,0.5)]'></textarea>
+                    <button ref={buttonRef} disabled={isButtonDisabled} className='sendButton disabled:bg-black/30 absolute right-[10px] top-[7px] text-center bg-black text-white border-0 cursor-pointer w-[40px] h-[40px] rounded-[30px] disabled:cursor-not-allowed'><ArrowUpIcon className='w-[25px] h-[25px] relative left-[8px]' /></button>
 
                 </form>
             </div>

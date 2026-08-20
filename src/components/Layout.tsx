@@ -149,7 +149,7 @@ function Layout() {
                     </div>
                     <PopoverDemo username={username} toggle={toggle} theme={theme} />
                 </div>
-                <div className={`chatSection transition-all duration-300 ease-in-out   relative ${toggle ? 'left-[17%] w-[80%]' : 'left-[0%] w-[100%] md:w-[93%] md:left-[80px] lg:w-[93%]'}  h-screen z-[300]`}>
+                <div className={`chatSection transition-all duration-300 ease-in-out   relative ${toggle ? 'left-[17%] w-[80%]' : 'left-[0%] w-[100%] md:w-[93%] md:left-[70px] lg:w-[93%]'}  h-screen z-[300]`}>
                     <Chatbot />
                 </div>
                 <div className='chatbotInner hidden fixed right-0 bottom-0 lg:w-[550px] md:w-[250px] m-0 p-0'>

@@ -59,7 +59,7 @@ function Login() {
 
     return (
         <>
-            <div style={{ color: 'red', fontSize: '30px' }}>TEST MOBILE</div>
+            {/* <div style={{ color: 'red', fontSize: '30px' }}>TEST MOBILE</div> */}
             <div className='login flex items-center justify-center relative min-h-screen my-0 mx-[50px]'>
                 <div className='loginLeft w-[50%] hidden sm:hidden md:hidden xl:block lg:block'>
                     <div className='logo relative left-3/8'>

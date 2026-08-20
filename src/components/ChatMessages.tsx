@@ -75,7 +75,7 @@ function ChatMessages({ chats, count, error }: ChatMessagesType) {
 
     return (
         <>
-            <ul className='chatbotMessageList px-10 m-5 list-none flex flex-col 
+            <ul className='chatbotMessageList px-[30px] md:px-[50px] m-5 list-none flex flex-col 
             [&_.user]:text-right [&_.assistant]:text-left [&_.user]:self-end [&_.assistant]:self-start ![&_li.assistant_h1]:text-[#180ea7]'>
                 {
                     chats.length > 0 && ((chats.map((chat, chatIndex) => {
