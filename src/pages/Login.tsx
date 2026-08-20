@@ -56,9 +56,10 @@ function Login() {
         setIsOpen(true);
     }
     const [isTouched, setIsTouched] = useState(false);
-    
+
     return (
         <>
+            <div style={{ color: 'red', fontSize: '30px' }}>TEST MOBILE</div>
             <div className='login flex items-center justify-center relative min-h-screen my-0 mx-[50px]'>
                 <div className='loginLeft w-[50%] hidden sm:hidden md:hidden xl:block lg:block'>
                     <div className='logo relative left-3/8'>
@@ -99,7 +100,7 @@ function Login() {
                                 />
                             </div>
                             <div className='field flex relative group'>
-                                <div className='absolute top-4 left-4'><KeyIcon className={`w-5 h-5 text-white group-focus-within:text-black  ${isTouched ? 'text-white' : 'text-black'} `}/></div>
+                                <div className='absolute top-4 left-4'><KeyIcon className={`w-5 h-5 text-white group-focus-within:text-black  ${isTouched ? 'text-white' : 'text-black'} `} /></div>
                                 <input type="password"
                                     onBlur={() => setIsTouched(true)}
                                     onFocus={() => setIsTouched(false)}
