@@ -20,8 +20,16 @@ function App() {
 
   return (
     <>
-
-      <BrowserRouter>
+      <div
+        style={{
+          color: 'red',
+          fontSize: '40px',
+          padding: '20px',
+        }}
+      >
+        IOS REACT TEST
+      </div>
+      {/* <BrowserRouter>
         <Routes>
           <Route path='/' element={<Navigate to='login' replace />} />
           <Route path='/login' element={<Login />} />
@@ -34,7 +42,8 @@ function App() {
           </Route>
           <Route path='*' element={<NotFound />} />
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter> */}
+
     </>
   )
 }
