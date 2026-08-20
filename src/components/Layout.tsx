@@ -111,7 +111,7 @@ function Layout() {
     return (
         <>
             <div className={`layout ${theme ? 'bg-[#0A0928]' : 'bg-[#e9e9e9]'} w-full flex w-full h-screen relative`}>
-                <MenuIcon className={`absolute top-3 left-3 text-white cursor-pointer md:hidden lg:hidden z-500 ${toggle ? 'hidden' : 'block'}`} onClick={handleSidebarExpand} />
+                <MenuIcon className={`absolute top-3 left-3 ${theme ? 'text-white' : 'text-black' } cursor-pointer md:hidden lg:hidden z-500 ${toggle ? 'hidden' : 'block'}`} onClick={handleSidebarExpand} />
 
                 <div className={`sideBar transition-all shadow-2xl duration-300 ease-in-out w-[60px] p-0 ${theme ? 'bg-[#272269] shadow-black' : 'bg-[#ffffff] shadow-gray-500'}   group text-left fixed h-screen z-[400]  ${toggle ? 'w-[200px] block ' : 'hidden md:block  '} `}>
 
@@ -144,7 +144,7 @@ function Layout() {
                             <PanelLeftOpenIcon className={`hidden ${theme ? 'text-white/50 hover:text-white' : 'text-black'} group-hover:block absolute top-0 right-2 cursor-pointer w-6 h-6 m-auto ${toggle ? 'block group-hover:hidden' : ''}`} onClick={handleSidebarExpand} />
                         </ToolTipPreview>
                         <ToolTipPreview text="Close sidebar">
-                            <PanelLeftCloseIcon className={`absolute ${theme ? 'text-white/50 hover:text-white' : 'text-black/50 hover:text-black'} top-1 -right-40 cursor-pointer w-6 h-6 m-auto ${toggle ? 'block group-hover:block' : 'hidden'}`} onClick={handleSidebarClose} />
+                            <PanelLeftCloseIcon className={`absolute ${theme ? 'text-white/50 hover:text-white' : 'text-black/50 hover:text-black'} top-1 -right-[140px] cursor-pointer w-6 h-6 m-auto ${toggle ? 'block group-hover:block' : 'hidden'}`} onClick={handleSidebarClose} />
                         </ToolTipPreview>
                     </div>
                     <PopoverDemo username={username} toggle={toggle} theme={theme} />
