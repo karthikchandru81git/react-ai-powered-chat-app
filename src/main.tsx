@@ -9,6 +9,6 @@ import { AppProvider } from './contextapi/AppContext.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+    <AppProvider><App /></AppProvider>
   </StrictMode>,
 )

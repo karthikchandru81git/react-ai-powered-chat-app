@@ -6,10 +6,7 @@ import { CogIcon, UserIcon, KeyIcon } from 'lucide-react';
 import DialogPreview from '../components/DialogPreview';
 
 function Login() {
-    //const { updateUsername } = useApp();
-    let updateUsername = () => {
-        
-    }
+    const { updateUsername } = useApp();
     const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate();
     const initialState = {
